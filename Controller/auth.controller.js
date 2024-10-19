@@ -17,5 +17,3 @@ authController.authentication = (req, res) => {
 };
 
 module.exports = authController;
-
-//3. 토큰 verify : 토큰으로 유저정보 찾기 10.12
