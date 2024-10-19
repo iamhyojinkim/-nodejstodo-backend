@@ -9,15 +9,19 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use("/", indexRouter);
-const mongoURL = process.env.MONGODB_URI_PROD;
-console.log(mongoURL);
-mongoose
-  .connect(mongoURL, { useNewUrlParser: true })
-  .then(() => console.log("mongoose connected"))
-  .catch((err) => console.log("DB connected", err));
 
-app.listen(5000, () => {
-  console.log("server on 5000");
+const mongoURI =
+  process.env.MONGODB_URI_PROD ||
+  "mongodb://localhost:27017/your_database_name";
+
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("db connected fail", err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`server on at ${PORT}`);
 });
 
 //몽고디비 배포 다시보기 10.17
