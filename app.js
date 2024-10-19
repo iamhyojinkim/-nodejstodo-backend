@@ -3,13 +3,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const indexRouter = require("./route/index");
 const cors = require("cors");
+require("dotenv").config();
 const app = express();
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use("/", indexRouter);
-const mongoURL = "mongodb://localhost:27017/todo-demo";
-
+const mongoURL = process.env.MONGODB_URI_PROD;
+console.log(mongoURL);
 mongoose
   .connect(mongoURL, { useNewUrlParser: true })
   .then(() => console.log("mongoose connected"))
@@ -18,3 +19,5 @@ mongoose
 app.listen(5000, () => {
   console.log("server on 5000");
 });
+
+//몽고디비 배포 다시보기 10.17
