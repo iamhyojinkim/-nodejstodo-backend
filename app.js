@@ -11,8 +11,7 @@ app.use(bodyParser.json());
 app.use("/", indexRouter);
 
 const mongoURI =
-  process.env.MONGODB_URI_PROD ||
-  "mongodb://localhost:27017/your_database_name";
+  process.env.MONGODB_URI || "mongodb://localhost:27017/your_database_name";
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
