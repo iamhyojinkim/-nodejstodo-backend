@@ -6,7 +6,10 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 
-// 환경변수에서 MongoDB 연결 문자열 가져오기
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
 const mongoURI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/todo-demo"; // 로컬 개발용 URI 추가
 
@@ -16,6 +19,6 @@ mongoose
   .catch((err) => console.log("DB connection failed", err));
 
 // 포트 설정
-const PORT = process.env.PORT || 5000; // Heroku에서 제공하는 포트 또는 로컬 포트
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
