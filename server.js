@@ -14,11 +14,11 @@ const mongoURI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/todo-demo"; // 로컬 개발용 URI 추가
 
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => console.log("Mongoose connected"))
   .catch((err) => console.log("DB connection failed", err));
 
 // 포트 설정
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

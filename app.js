@@ -13,11 +13,11 @@ const mongoURI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/todo-nodejs";
 
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("db connected fail", err));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
