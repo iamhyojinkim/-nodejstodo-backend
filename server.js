@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
+app.get("/task", (req, res) => {
+  res.send("task tet");
+});
+
 const mongoURI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/todo-demo"; // 로컬 개발용 URI 추가
 

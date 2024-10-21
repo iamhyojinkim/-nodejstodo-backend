@@ -9,8 +9,13 @@ taskController.createTask = async (req, res, next) => {
 };
 
 taskController.getTask = async (req, res, next) => {
-  const getTask = await Task.find({});
-  res.status(200).json({ status: "ok", data: getTask });
+  try {
+    console.log("GET /task 요청이 처리되고 있습니다.");
+    const getTask = await Task.find({});
+    res.status(200).json({ status: "ok", data: getTask });
+  } catch (error) {
+    res.status(404).json(error);
+  }
 };
 
 taskController.deleteTask = async (req, res, next) => {
@@ -24,7 +29,6 @@ taskController.deleteTask = async (req, res, next) => {
 };
 
 taskController.updateTask = async (req, res, next) => {
-  console.log(req.body);
   const id = req.params.id;
   const updateTask = await Task.findByIdAndUpdate(
     id,
@@ -35,3 +39,5 @@ taskController.updateTask = async (req, res, next) => {
 };
 
 module.exports = taskController;
+
+//10.20 아직도 백앤드 서버 배포때문에 도대체 며칠을 헤매는중^^^^^^^시발시발
